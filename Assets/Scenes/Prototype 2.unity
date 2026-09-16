@@ -304,29 +304,16 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 100046, guid: 7b6675de545141649953fd8adec4561b, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 318036897}
+      addedObject: {fileID: 318036900}
     - targetCorrespondingSourceObject: {fileID: 100046, guid: 7b6675de545141649953fd8adec4561b, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 318036900}
+      addedObject: {fileID: 318036901}
   m_SourcePrefab: {fileID: 100100000, guid: 7b6675de545141649953fd8adec4561b, type: 3}
 --- !u!1 &318036896 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100046, guid: 7b6675de545141649953fd8adec4561b, type: 3}
   m_PrefabInstance: {fileID: 290983906}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &318036897
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 318036896}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 635e9b587acdc4b408132a9c9bfc160e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  projectilePrefab: {fileID: 5097943820623735403, guid: 77153425c32ae334a8a8d824dc6259bf, type: 3}
 --- !u!114 &318036900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -354,8 +341,8 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 318036897}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+      - m_Target: {fileID: 318036901}
+        m_TargetAssemblyTypeName: PlayerControllerOP, Assembly-CSharp
         m_MethodName: Move
         m_Mode: 0
         m_Arguments:
@@ -370,8 +357,8 @@ MonoBehaviour:
     m_ActionName: 'Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 318036897}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+      - m_Target: {fileID: 318036901}
+        m_TargetAssemblyTypeName: PlayerControllerOP, Assembly-CSharp
         m_MethodName: Attack
         m_Mode: 0
         m_Arguments:
@@ -424,15 +411,24 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 9caa3d8a-6b2f-4e8e-8bad-6ede561bd9be
     m_ActionName: UI/TrackedDeviceOrientation
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: e5473d10-bac8-4c56-b54f-44b09c5e8526
-    m_ActionName: 'Spawner/Spawn[/Keyboard/s]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &318036901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 318036896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38e917c52987daa41af6a0305d9813c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerControllerOP
+  projectilePrefab: {fileID: 5097943820623735403, guid: 77153425c32ae334a8a8d824dc6259bf, type: 3}
 --- !u!1 &425805626
 GameObject:
   m_ObjectHideFlags: 0
@@ -883,7 +879,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2085696746}
-  - component: {fileID: 2085696745}
+  - component: {fileID: 2085696748}
+  - component: {fileID: 2085696747}
   m_Layer: 0
   m_Name: SpawnManager
   m_TagString: Untagged
@@ -891,22 +888,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2085696745
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2085696743}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6c0ef6eac1f25e498944aa5d7f0df8d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SpawnManager
-  animalPrefabs:
-  - {fileID: 7123604173293233950, guid: 8f26a6aa2ccbdf94c9b4ec0cf901af1b, type: 3}
-  - {fileID: 4276541987303433806, guid: 1c3167c1547e53141a0b8e88b7302009, type: 3}
-  - {fileID: 8278354984588499672, guid: 2c8b1253aa7aeda4ba6e51ba453015bf, type: 3}
 --- !u!4 &2085696746
 Transform:
   m_ObjectHideFlags: 0
@@ -922,6 +903,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2085696747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2085696743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45c0e1f24e2ce4a5b9bf1f3a7499cd45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectPoolerOP
+  pooledObjects: []
+  objectToPool: {fileID: 5097943820623735403, guid: 77153425c32ae334a8a8d824dc6259bf, type: 3}
+  amountToPool: 20
+--- !u!114 &2085696748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2085696743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6c0ef6eac1f25e498944aa5d7f0df8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpawnManager
+  animalPrefabs:
+  - {fileID: 7123604173293233950, guid: 8f26a6aa2ccbdf94c9b4ec0cf901af1b, type: 3}
+  - {fileID: 4276541987303433806, guid: 1c3167c1547e53141a0b8e88b7302009, type: 3}
+  - {fileID: 8278354984588499672, guid: 2c8b1253aa7aeda4ba6e51ba453015bf, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
