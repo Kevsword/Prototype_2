@@ -10,8 +10,10 @@ public class PlayerControllerOP : MonoBehaviour
     private float xRange = 20;
     public GameObject projectilePrefab;
 
+    public GameObject[] CurrentLives;
+    public int Lives = 3;
+    public bool HasLives = true;
 
-    // Update is called once per frame
     void Update()
     {
         Boundaries();
@@ -35,22 +37,23 @@ public class PlayerControllerOP : MonoBehaviour
 
     private void Movement()
     {
-        transform.Translate(Vector3.right * Time.deltaTime * speed * _horizontalMov);
+        // Player horizontal movement
+        if (HasLives)
+        {
+            transform.Translate(Vector3.right * Time.deltaTime * speed * _horizontalMov);
+        }
     }
 
+    // Get horizontal input
     public void Move(InputAction.CallbackContext context)
     {
-        // Player movement left to right
         _horizontalMov = context.ReadValue<Vector2>().x;
     }
 
     public void Attack(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && HasLives)
         {
-            // No longer necessary to Instantiate prefabs
-            // Instantiate(projectilePrefab, transform.position, projectilePrefab.transform.rotation);
-
             // Get an object object from the pool
             GameObject pooledProjectile = ObjectPoolerOP.SharedInstance.GetPooledObject();
             if (pooledProjectile != null)
@@ -59,5 +62,17 @@ public class PlayerControllerOP : MonoBehaviour
                 pooledProjectile.transform.position = transform.position; // position it at player
             }
         }
+    }
+
+    public void GameOver()
+    {
+        HasLives = false;
+    }
+
+    public void LifeDown()
+    {
+        Lives--;
+
+        CurrentLives[Lives].SetActive(false);
     }
 }

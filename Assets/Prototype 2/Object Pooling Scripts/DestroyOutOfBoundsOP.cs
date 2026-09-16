@@ -7,29 +7,37 @@ public class DestroyOutOfBoundsOP : MonoBehaviour
     private float topBound = 30;
     private float lowerBound = -10;
 
-    // Start is called before the first frame update
-    void Start()
-    {
+    private PlayerControllerOP _playerControllerScript;
 
+    private void Start()
+    {
+        _playerControllerScript = GameObject.Find("Player").GetComponent<PlayerControllerOP>();
     }
 
-    // Update is called once per frame
     void Update()
     {
+        DeleteObjects();
+    }
+
+    private void DeleteObjects()
+    {
+        // When projectile reaches top bound deactivate it
         if (transform.position.z > topBound)
         {
-            // Instead of destroying the projectile when it leaves the screen
-            //Destroy(gameObject);
-
-            // Just deactivate it
             gameObject.SetActive(false);
-
         }
+
+        // Animal reaches lower bound
         else if (transform.position.z < lowerBound)
         {
-            Debug.Log("Game Over!");
+            //Debug.Log("Game Over!");
+            _playerControllerScript.LifeDown();
+            if (_playerControllerScript.Lives <= 0)
+            {
+                _playerControllerScript.GameOver();
+            }
+
             Destroy(gameObject);
         }
-
     }
 }

@@ -4,6 +4,13 @@ public class MoveForward : MonoBehaviour
 {
     private float _speed = 10.0f;
 
+    private PlayerControllerOP _playerControllerScript;
+
+    private void Start()
+    {
+        _playerControllerScript = GameObject.Find("Player").GetComponent<PlayerControllerOP>();
+    }
+
     void Update()
     {
         Movement();
@@ -12,6 +19,9 @@ public class MoveForward : MonoBehaviour
     private void Movement()
     {
         // Lineal movement
-        transform.Translate(Vector3.forward * _speed * Time.deltaTime); 
+        if (_playerControllerScript.HasLives)
+        {
+            transform.Translate(Vector3.forward * _speed * Time.deltaTime);
+        }
     }
 }
